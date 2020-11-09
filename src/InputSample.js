@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 
 // function InputSample() {
 //     const [text, setText] = useState('');
@@ -28,8 +28,9 @@ function InputsSample() {
     const [inputs, setInputs] = useState({
         name: '',
         nickname: '',
-    })
+    })  
 
+    const nameInput = useRef(); // useRef로 특정 Dom 선택하기
     //비구조할당으로 기존 값 로컬로 저장
     const {name, nickname} = inputs;
 
@@ -47,11 +48,12 @@ function InputsSample() {
             name: '',
             nickname: '',
         })
+        nameInput.current.focus();
     }
 
     return (
         <div>
-            <input name="name" onChange={onChange} placeholder="이름" value={name}/>
+            <input name="name" onChange={onChange} placeholder="이름" value={name} ref={nameInput}/>
             <input name="nickname" onChange={onChange} placeholder="닉네임" value={nickname} />
             <button onClick={onReset}>초기화</button>
             <div>
