@@ -47,6 +47,7 @@ function App() {                     //이함수가 -> html형태로 바뀌어�
   //useRef로 상태관리
   const nextId = useRef(4);
 
+  //배열에 항목 추가.
   const onCreate = () => {
     // users 배열에 user 추가하기
     const user = {
@@ -65,10 +66,12 @@ function App() {                     //이함수가 -> html형태로 바뀌어�
     nextId.current += 1;
   };
 
+  //배열 delete (filter사용)
   const onRemove = id => {
     setUsers(users.filter(user => user.id !== id));
   };
 
+  //배열 업데이트 (map 사용)
   const onToggle = id => {
     //setUsers(users.map( user => user.id === id ? {...user, active: !user.active} : user));
     setUsers(users.map(function(user) {
